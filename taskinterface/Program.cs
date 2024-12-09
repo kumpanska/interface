@@ -21,6 +21,16 @@ namespace taskinterface
             this.denom = denom;
         }
     }
+    class MyComplex
+    {
+        private double re;
+        private double im;
+        public MyComplex(double re, double im)
+        {
+            this.re = re;
+            this.im = im;
+        }
+    }
     internal class Program
     {
         static void Main(string[] args)
