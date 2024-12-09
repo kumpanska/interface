@@ -20,6 +20,10 @@ namespace taskinterface
             this.nom = nom;
             this.denom = denom;
         }
+        override public String ToString()
+        {
+            return $"{nom}/{denom}";
+        }
     }
     class MyComplex
     {
@@ -29,6 +33,10 @@ namespace taskinterface
         {
             this.re = re;
             this.im = im;
+        }
+        override public String ToString()
+        {
+            return $"{re}+{im}i";
         }
     }
     internal class Program
