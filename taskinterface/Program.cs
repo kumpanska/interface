@@ -31,6 +31,26 @@ namespace taskinterface
         {
             return $"{nom}/{denom}";
         }
+        MyFrac Add(MyFrac that)
+        {
+            return new MyFrac(this.nom * that.denom + that.nom * this.denom, this.denom * that.denom);
+        }
+        MyFrac Subtract(MyFrac that)
+        {
+            return new MyFrac(this.nom * that.denom - that.nom * this.denom, this.denom * that.denom);
+        }
+        MyFrac Multiply(MyFrac that)
+        {
+            return new MyFrac(this.nom * that.nom, this.denom * that.denom);
+        }
+        MyFrac Divide(MyFrac that)
+        {
+            if (that.denom == 0)
+            {
+                throw new System.DivideByZeroException("Divide by zero");
+            }
+            return new MyFrac(this.nom * that.denom, this.denom * that.nom);
+        }
     }
     class MyComplex
     {
