@@ -14,7 +14,7 @@ namespace taskinterface
         T Multiply(T b);
         T Divide(T b);
     }
-    class MyFrac
+    class MyFrac : IMyNumber<MyFrac>
     {
         private BigInteger nom;
         private BigInteger denom;
@@ -31,19 +31,19 @@ namespace taskinterface
         {
             return $"{nom}/{denom}";
         }
-        MyFrac Add(MyFrac that)
+        public MyFrac Add(MyFrac that)
         {
             return new MyFrac(this.nom * that.denom + that.nom * this.denom, this.denom * that.denom);
         }
-        MyFrac Subtract(MyFrac that)
+        public MyFrac Subtract(MyFrac that)
         {
             return new MyFrac(this.nom * that.denom - that.nom * this.denom, this.denom * that.denom);
         }
-        MyFrac Multiply(MyFrac that)
+        public MyFrac Multiply(MyFrac that)
         {
             return new MyFrac(this.nom * that.nom, this.denom * that.denom);
         }
-        MyFrac Divide(MyFrac that)
+        public MyFrac Divide(MyFrac that)
         {
             if (that.denom == 0)
             {
@@ -52,7 +52,7 @@ namespace taskinterface
             return new MyFrac(this.nom * that.denom, this.denom * that.nom);
         }
     }
-    class MyComplex
+    class MyComplex : IMyNumber<MyComplex>
     {
         private double re;
         private double im;
@@ -65,26 +65,26 @@ namespace taskinterface
         {
             return $"{re}+{im}i";
         }
-        MyComplex Add(MyComplex that)
+        public MyComplex Add(MyComplex that)
         {
             return new MyComplex(this.re + that.re, this.im + that.im);
         }
-        MyComplex Subtract(MyComplex that)
+        public MyComplex Subtract(MyComplex that)
         {
             return new MyComplex(this.re - that.re, this.im - that.im);
         }
-        MyComplex Multiply(MyComplex that)
+        public MyComplex Multiply(MyComplex that)
         {
-            return new MyComplex(this.re * that.re - this.im * that.im, this.re * that.im+this.im*that.re);
+            return new MyComplex(this.re * that.re - this.im * that.im, this.re * that.im + this.im * that.re);
         }
-        MyComplex Divide(MyComplex that)
+        public MyComplex Divide(MyComplex that)
         {
             if (that.re == 0 && that.im == 0)
             {
                 throw new System.DivideByZeroException("Divide by zero");
             }
             double denominator = that.re * that.re + that.im * that.im;
-            return new MyComplex((this.re*that.re+this.im*that.im)/denominator,(this.im*that.re-this.re*that.im)/denominator);
+            return new MyComplex((this.re * that.re + this.im * that.im) / denominator, (this.im * that.re - this.re * that.im) / denominator);
         }
     }
     internal class Program
