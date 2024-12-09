@@ -65,6 +65,27 @@ namespace taskinterface
         {
             return $"{re}+{im}i";
         }
+        MyComplex Add(MyComplex that)
+        {
+            return new MyComplex(this.re + that.re, this.im + that.im);
+        }
+        MyComplex Subtract(MyComplex that)
+        {
+            return new MyComplex(this.re - that.re, this.im - that.im);
+        }
+        MyComplex Multiply(MyComplex that)
+        {
+            return new MyComplex(this.re * that.re - this.im * that.im, this.re * that.im+this.im*that.re);
+        }
+        MyComplex Divide(MyComplex that)
+        {
+            if (that.re == 0 && that.im == 0)
+            {
+                throw new System.DivideByZeroException("Divide by zero");
+            }
+            double denominator = that.re * that.re + that.im * that.im;
+            return new MyComplex((this.re*that.re+this.im*that.im)/denominator,(this.im*that.re-this.re*that.im)/denominator);
+        }
     }
     internal class Program
     {
