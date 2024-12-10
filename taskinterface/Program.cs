@@ -87,8 +87,10 @@ namespace taskinterface
             {
                 throw new System.DivideByZeroException("Divide by zero");
             }
+            double numerator1 = this.re * that.re + this.im * that.im;
+            double numerator2 = this.im * that.re - this.re * that.im;
             double denominator = that.re * that.re + that.im * that.im;
-            return new MyComplex((this.re * that.re + this.im * that.im) / denominator, (this.im * that.re - this.re * that.im) / denominator);
+            return new MyComplex(numerator1 / denominator, numerator2 / denominator);
         }
     }
     internal class Program
