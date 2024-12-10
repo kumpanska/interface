@@ -14,7 +14,7 @@ namespace taskinterface
         T Multiply(T b);
         T Divide(T b);
     }
-    class MyFrac : IMyNumber<MyFrac>
+    class MyFrac : IMyNumber<MyFrac>,IComparable<MyFrac>
     {
         private BigInteger nom;
         private BigInteger denom;
@@ -30,6 +30,10 @@ namespace taskinterface
         override public String ToString()
         {
             return $"{nom}/{denom}";
+        }
+        public int CompareTo(MyFrac other)
+        {
+            return (this.nom * other.denom).CompareTo(other.nom * this.denom);
         }
         public MyFrac Add(MyFrac that)
         {
