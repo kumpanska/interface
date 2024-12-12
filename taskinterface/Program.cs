@@ -44,9 +44,9 @@ namespace taskinterface
             }
 
         }
-        public int CompareTo(MyFrac other)
+        public int CompareTo(MyFrac that)
         {
-            return (this.nom * other.denom).CompareTo(other.nom * this.denom);
+            return (this.nom * that.denom).CompareTo(that.nom * this.denom);
         }
         public MyFrac Add(MyFrac that)
         {
