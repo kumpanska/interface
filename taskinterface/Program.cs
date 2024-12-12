@@ -31,6 +31,19 @@ namespace taskinterface
         {
             return $"{nom}/{denom}";
         }
+        public MyFrac(string str)
+        {
+            string[] parts = str.Split('/');
+            if (parts.Length != 2 || !BigInteger.TryParse(parts[0], out nom) || !BigInteger.TryParse(parts[1], out denom))
+            {
+                throw new ArgumentException("Wrong format. Expected format: 'numerator/denominator'");
+            }
+            if (denom == 0)
+            {
+                throw new ArgumentException("Denominator can't be zero format");
+            }
+
+        }
         public int CompareTo(MyFrac other)
         {
             return (this.nom * other.denom).CompareTo(other.nom * this.denom);
