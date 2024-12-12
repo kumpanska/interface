@@ -78,6 +78,14 @@ namespace taskinterface
             this.re = re;
             this.im = im;
         }
+       public MyComplex(string str)
+        {
+            string[] parts = str.Split(new char[] { '+', 'i' }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length != 2 || !double.TryParse(parts[0], out re) || !double.TryParse(parts[1], out im))
+            {
+                throw new ArgumentException("Wrong format. Expected format: 'real+imaginaryi'");
+            }
+        }
         override public String ToString()
         {
             return $"{re}+{im}i";
