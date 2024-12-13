@@ -89,17 +89,17 @@ namespace TestProject1
         [TestMethod]
         public void TestMyFrac_Substract()
         {
-            var frac1 = new MyComplex(1, 2);
-            var frac2 = new MyComplex(1, 4);
+            var frac1 = new MyFrac(1, 2);
+            var frac2 = new MyFrac(1, 4);
             var result = frac1.Subtract(frac2);
-            Assert.AreEqual("-1/2", result.ToString());
+            Assert.AreEqual("1/4", result.ToString());
         }
         [TestMethod]
         public void TestMyFrac_Addition()
         {
-            var frac1 = new MyComplex(5, 3);
-            var frac2 = new MyComplex(2, 7);
-            var result = frac1.Subtract(frac2);
+            var frac1 = new MyFrac(5, 3);
+            var frac2 = new MyFrac(2, 7);
+            var result = frac1.Add(frac2);
             Assert.AreEqual("41/21", result.ToString());
         }
     }
