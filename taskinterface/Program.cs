@@ -147,11 +147,15 @@ namespace taskinterface
         {
             MyFrac frac1 = new MyFrac("4/8");
             MyFrac frac2 = new MyFrac("6/8");
+            MyComplex complex1 = new MyComplex("4+1i");
+            MyComplex complex2 = new MyComplex("4+2f");
             Console.WriteLine($"{frac1}+{frac2}");
             Console.WriteLine(frac1.Add(frac2));
-            TestAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 6));
-            TestAPlusBSquare(new MyComplex(2, 5), new MyComplex(-2, 5));
-            TestSquareDifference(new MyFrac(-1, 2), new MyFrac(1, 2));
+            Console.WriteLine($"{complex1}-{complex2}");
+            Console.WriteLine(complex1.Subtract(complex2));
+            TestAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 3));
+            TestAPlusBSquare(new MyComplex(2,5), new MyComplex(-2, 5));
+            TestSquareDifference(new MyFrac(-1, 3), new MyFrac(1, 2));
             TestSquareDifference(new MyComplex(-1,-2), new MyComplex(1, 2));
             Console.ReadKey();
         }
