@@ -136,6 +136,8 @@ namespace taskinterface
             Console.WriteLine(frac1.Add(frac2));
             TestAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 6));
             TestAPlusBSquare(new MyComplex(1, 3), new MyComplex(1, 6));
+            TestSquareDifference(new MyFrac(1, 2), new MyFrac(1, 3));
+            TestSquareDifference(new MyComplex(1, 2), new MyComplex(1, 3));
             Console.ReadKey();
         }
         static void TestSquareDifference<T>(T a, T b) where T : IMyNumber<T>
