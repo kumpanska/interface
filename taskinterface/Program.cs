@@ -76,9 +76,10 @@ namespace taskinterface
         {
             if (that.denom == 0)
             {
-                throw new System.DivideByZeroException("Divide by zero");
+                throw new System.DivideByZeroException();
             }
             return new MyFrac(this.nom * that.denom, this.denom * that.nom);
+
         }
     }
     class MyComplex : IMyNumber<MyComplex>
@@ -125,7 +126,7 @@ namespace taskinterface
         {
             if (that.re == 0 && that.im == 0)
             {
-                throw new System.DivideByZeroException("Divide by zero");
+                throw new System.DivideByZeroException();
             }
             double numerator1 = this.re * that.re + this.im * that.im;
             double numerator2 = this.im * that.re - this.re * that.im;
@@ -141,10 +142,10 @@ namespace taskinterface
             MyFrac frac2 = new MyFrac("6/8");
             Console.WriteLine($"{frac1}+{frac2}");
             Console.WriteLine(frac1.Add(frac2));
-            TestAPlusBSquare(new MyFrac(1, 0), new MyFrac(1, 6));
-            TestAPlusBSquare(new MyComplex(1, 3), new MyComplex(1, 6));
-            TestSquareDifference(new MyFrac(1, 2), new MyFrac(1, 3));
-            TestSquareDifference(new MyComplex(1, 2), new MyComplex(1, 3));
+            TestAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 6));
+            TestAPlusBSquare(new MyComplex(2, 5), new MyComplex(-2, 5));
+            TestSquareDifference(new MyFrac(2, 1), new MyFrac(-2, 1));
+            TestSquareDifference(new MyComplex(0, 0), new MyComplex(0, 0));
             Console.ReadKey();
         }
         static void TestSquareDifference<T>(T a, T b) where T : IMyNumber<T>
