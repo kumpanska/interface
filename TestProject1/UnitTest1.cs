@@ -102,5 +102,21 @@ namespace TestProject1
             var result = frac1.Add(frac2);
             Assert.AreEqual("41/21", result.ToString());
         }
+        [TestMethod]
+        public void TestMyFrac_Multiplication()
+        {
+            var frac1 = new MyFrac(15, 2);
+            var frac2 = new MyFrac(3, 4);
+            var result = frac1.Multiply(frac2);
+            Assert.AreEqual("45/8", result.ToString());
+        }
+        [TestMethod]
+        public void TestMyFrac_Divide()
+        {
+            var complex1 = new MyComplex(21, 2);
+            var complex2 = new MyComplex(1, 3);
+            var result = complex1.Divide(complex2);
+            Assert.AreEqual("63/2", result.ToString());
+        }
     }
 }
