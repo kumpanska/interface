@@ -45,7 +45,7 @@ namespace taskinterface
             {
                 return $"{nom}/{denom}";
             }
-            else 
+            else
             {
                 return $"{nom}";
             }
@@ -147,16 +147,33 @@ namespace taskinterface
         {
             MyFrac frac1 = new MyFrac("4/8");
             MyFrac frac2 = new MyFrac("6/8");
-            MyComplex complex1 = new MyComplex("4+1i");
-            MyComplex complex2 = new MyComplex("4+2f");
-            Console.WriteLine($"{frac1}+{frac2}");
-            Console.WriteLine(frac1.Add(frac2));
-            Console.WriteLine($"{complex1}-{complex2}");
-            Console.WriteLine(complex1.Subtract(complex2));
+            List<MyFrac> fractions = new List<MyFrac>
+            {
+               new MyFrac(2, 9), new MyFrac(1, 2), new MyFrac(7, 6),
+               new MyFrac(1, 3),new MyFrac(3, 8)
+            };
+            Console.WriteLine("Before sorting:");
+            foreach (var frac in fractions)
+            {
+                Console.WriteLine(frac);
+            }
+            fractions.Sort();
+
+            Console.WriteLine("\nAfter sorting:");
+            foreach (var frac in fractions)
+            {
+                Console.WriteLine(frac);
+            }
+            //MyComplex complex1 = new MyComplex("4+1i");
+            //MyComplex complex2 = new MyComplex("4+2f");
+            //Console.WriteLine($"{frac1}+{frac2}");
+            //Console.WriteLine(frac1.Add(frac2));
+            //Console.WriteLine($"{complex1}-{complex2}");
+            //Console.WriteLine(complex1.Subtract(complex2));
             TestAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 3));
-            TestAPlusBSquare(new MyComplex(2,5), new MyComplex(-2, 5));
+            TestAPlusBSquare(new MyComplex(2, 5), new MyComplex(-2, 5));
             TestSquareDifference(new MyFrac(-1, 3), new MyFrac(1, 2));
-            TestSquareDifference(new MyComplex(-1,-2), new MyComplex(1, 2));
+            TestSquareDifference(new MyComplex(-1, -2), new MyComplex(1, 2));
             Console.ReadKey();
         }
         static void TestSquareDifference<T>(T a, T b) where T : IMyNumber<T>
