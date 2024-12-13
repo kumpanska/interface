@@ -22,7 +22,7 @@ namespace taskinterface
         {
             if (denom == 0)
             {
-                throw new DivideByZeroException("Denominator can't be zero");
+                throw new ArgumentException("Denominator can't be zero");
             }
             this.nom = nom;
             this.denom = denom;
@@ -141,7 +141,7 @@ namespace taskinterface
             MyFrac frac2 = new MyFrac("6/8");
             Console.WriteLine($"{frac1}+{frac2}");
             Console.WriteLine(frac1.Add(frac2));
-            TestAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 6));
+            TestAPlusBSquare(new MyFrac(1, 0), new MyFrac(1, 6));
             TestAPlusBSquare(new MyComplex(1, 3), new MyComplex(1, 6));
             TestSquareDifference(new MyFrac(1, 2), new MyFrac(1, 3));
             TestSquareDifference(new MyComplex(1, 2), new MyComplex(1, 3));
