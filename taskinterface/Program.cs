@@ -14,7 +14,7 @@ namespace taskinterface
         T Multiply(T b);
         T Divide(T b);
     }
-    class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
+    public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
     {
         private BigInteger nom;
         private BigInteger denom;
@@ -89,7 +89,7 @@ namespace taskinterface
 
         }
     }
-    class MyComplex : IMyNumber<MyComplex>
+    public class MyComplex : IMyNumber<MyComplex>
     {
         private double re;
         private double im;
