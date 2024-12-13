@@ -113,9 +113,9 @@ namespace TestProject1
         [TestMethod]
         public void TestMyFrac_Divide()
         {
-            var complex1 = new MyComplex(21, 2);
-            var complex2 = new MyComplex(1, 3);
-            var result = complex1.Divide(complex2);
+            var frac1 = new MyFrac(21, 2);
+            var frac2 = new MyFrac(1, 3);
+            var result = frac1.Divide(frac2);
             Assert.AreEqual("63/2", result.ToString());
         }
     }
