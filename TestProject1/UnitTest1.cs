@@ -67,5 +67,22 @@ namespace TestProject1
         {
             var complex = new MyComplex("4f+1i");
         }
+        public void TestMyFrac_Constructor()
+        {
+            var frac = new MyFrac(3,2);
+            Assert.AreEqual("3/2", frac.ToString());
+        }
+        [TestMethod]
+        public void TestMyRrac_ConstructorWithString()
+        {
+            var frac = new MyFrac("15/7");
+            Assert.AreEqual("15/7", frac.ToString());
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestMyFrac_ConstructorInvalidString()
+        {
+            var frac = new MyFrac("14/9h");
+        }
     }
 }
