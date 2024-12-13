@@ -49,5 +49,23 @@ namespace TestProject1
             var complex2 = new MyComplex(0, 0);
             var result = complex1.Divide(complex2);
         }
+        [TestMethod]
+        public void TestMyComplex_Constructor()
+        {
+            var complex = new MyComplex(3.5, -2.7);
+            Assert.AreEqual("3,5-2,7i", complex.ToString());
+        }
+        [TestMethod]
+        public void TestMyComplex_ConstructorWithString()
+        {
+            var complex = new MyComplex("4+1i");
+            Assert.AreEqual("4+1i", complex.ToString());
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestMyComplex_ConstructorInvalidString()
+        {
+            var complex = new MyComplex("4f+1i");
+        }
     }
 }
