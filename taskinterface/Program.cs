@@ -100,7 +100,14 @@ namespace taskinterface
         }
         public override String ToString()
         {
-            return $"{re}+{im}i";
+            if (im < 0)
+            {
+                return $"{re}{im}i";
+            }
+            else
+            {
+                return $"{re}+{im}i";
+            }
         }
         public MyComplex Add(MyComplex that)
         {
@@ -158,8 +165,8 @@ namespace taskinterface
             Console.WriteLine("(a^2 - b^2)/(a+b) = " + leftSide.Divide(aPlusB));//(a^2-b^2)/(a+b)
             Console.WriteLine(" = = = ");
             T rightSide = aMinusB.Multiply(aPlusB);//(a-b)(a+b)
-            Console.WriteLine("(a-b)(a+b) " + rightSide);
-            Console.WriteLine("((a-b)(a+b))/(a+b) " + rightSide.Divide(aPlusB));//((a-b)(a+b))/(a+b)
+            Console.WriteLine("(a-b)(a+b) = " + rightSide);
+            Console.WriteLine("((a-b)(a+b))/(a+b) = " + rightSide.Divide(aPlusB));//((a-b)(a+b))/(a+b)
             Console.WriteLine("=== Finishing testing (a^2-b^2)/(a+b)=((a-b)(a+b))/(a+b) with a = " + a + ", b = " + b + " ===");
         }
         static void TestAPlusBSquare<T>(T a, T b) where T : IMyNumber<T>
