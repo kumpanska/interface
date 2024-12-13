@@ -83,7 +83,7 @@ namespace taskinterface
         {
             if (that.nom == 0)
             {
-                throw new DivideByZeroException();
+                throw new System.DivideByZeroException();
             }
             return new MyFrac(this.nom * that.denom, this.denom * that.nom);
 
