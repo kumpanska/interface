@@ -41,7 +41,14 @@ namespace taskinterface
         }
         public override String ToString()
         {
-            return $"{nom}/{denom}";
+            if (this.nom != 0)
+            {
+                return $"{nom}/{denom}";
+            }
+            else 
+            {
+                return $"{nom}";
+            }
         }
         public MyFrac(string str)
         {
@@ -74,9 +81,9 @@ namespace taskinterface
         }
         public MyFrac Divide(MyFrac that)
         {
-            if (that.denom == 0)
+            if (that.nom == 0)
             {
-                throw new System.DivideByZeroException();
+                throw new DivideByZeroException();
             }
             return new MyFrac(this.nom * that.denom, this.denom * that.nom);
 
@@ -144,8 +151,8 @@ namespace taskinterface
             Console.WriteLine(frac1.Add(frac2));
             TestAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 6));
             TestAPlusBSquare(new MyComplex(2, 5), new MyComplex(-2, 5));
-            TestSquareDifference(new MyFrac(2, 1), new MyFrac(-2, 1));
-            TestSquareDifference(new MyComplex(0, 0), new MyComplex(0, 0));
+            TestSquareDifference(new MyFrac(-1, 2), new MyFrac(1, 2));
+            TestSquareDifference(new MyComplex(-1,-2), new MyComplex(1, 2));
             Console.ReadKey();
         }
         static void TestSquareDifference<T>(T a, T b) where T : IMyNumber<T>
