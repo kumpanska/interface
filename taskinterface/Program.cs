@@ -26,6 +26,18 @@ namespace taskinterface
             }
             this.nom = nom;
             this.denom = denom;
+            SimplifyFrac();
+        }
+        private void SimplifyFrac()
+        {
+            BigInteger gcd = BigInteger.GreatestCommonDivisor(nom, denom);
+            nom /= gcd;
+            denom /= gcd;
+            if (denom < 0)
+            {
+                nom = -nom;
+                denom = -denom;
+            }
         }
         public override String ToString()
         {
