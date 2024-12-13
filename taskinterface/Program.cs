@@ -130,9 +130,35 @@ namespace taskinterface
     {
         static void Main(string[] args)
         {
+            MyFrac frac1 = new MyFrac("4/8");
+            MyFrac frac2 = new MyFrac("6/8");
+            Console.WriteLine($"{frac1}+{frac2}");
+            Console.WriteLine(frac1.Add(frac2));
             TestAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 6));
             TestAPlusBSquare(new MyComplex(1, 3), new MyComplex(1, 6));
             Console.ReadKey();
+        }
+        static void TestSquareDifference<T>(T a, T b) where T : IMyNumber<T>
+        {
+            Console.WriteLine("=== Starting testing (a^2-b^2)/(a+b)=((a-b)(a+b))/(a+b) with a = " + a + ", b = " + b + " ===");
+            T aMinusB = a.Subtract(b);
+            T aPlusB = a.Add(b);
+            Console.WriteLine("a = " + a);
+            Console.WriteLine("b = " + b);
+            Console.WriteLine("(a - b) = " + aMinusB);
+            Console.WriteLine("(a + b) = " + aPlusB);
+            T aSquared = a.Multiply(a);//a^2
+            T bSquared = b.Multiply(b);//b^2
+            Console.WriteLine("a^2 = " + aSquared);
+            Console.WriteLine("b^2 = " + bSquared);
+            T leftSide = aSquared.Subtract(bSquared);//a^2-b^2
+            Console.WriteLine("(a^2 - b^2) = " + leftSide);
+            Console.WriteLine("(a^2 - b^2)/(a+b) = " + leftSide.Divide(aPlusB));//(a^2-b^2)/(a+b)
+            Console.WriteLine(" = = = ");
+            T rightSide = aMinusB.Multiply(aPlusB);//(a-b)(a+b)
+            Console.WriteLine("(a-b)(a+b) " + rightSide);
+            Console.WriteLine("((a-b)(a+b))/(a+b) " + rightSide.Divide(aPlusB));//((a-b)(a+b))/(a+b)
+            Console.WriteLine("=== Finishing testing (a^2-b^2)/(a+b)=((a-b)(a+b))/(a+b) with a = " + a + ", b = " + b + " ===");
         }
         static void TestAPlusBSquare<T>(T a, T b) where T : IMyNumber<T>
         {
