@@ -3,12 +3,7 @@ namespace TestProject1
 {
     [TestClass]
     public class UnitTest1
-    {
-        [TestMethod]
-        public void TestMethod1()
-        {
-            
-        }
+    { 
         [TestMethod]
         public void TestMyComplex_Multiplication()
         {
@@ -38,8 +33,8 @@ namespace TestProject1
         {
             var complex1 = new MyComplex(10, 9);
             var complex2 = new MyComplex(2, 7);
-            var result = complex1.Subtract(complex2);
-            Assert.AreEqual("8+2i", result.ToString());
+            var result = complex1.Add(complex2);
+            Assert.AreEqual("12+16i", result.ToString());
         }
         [TestMethod]
         [ExpectedException(typeof(DivideByZeroException))]
@@ -83,6 +78,29 @@ namespace TestProject1
         public void TestMyFrac_ConstructorInvalidString()
         {
             var frac = new MyFrac("14/9h");
+        }
+        [ExpectedException(typeof(DivideByZeroException))]
+        public void TestMyFrac_ExceptionDivideByZero()
+        {
+            var frac1 = new MyFrac(-1, 2);
+            var frac2 = new MyFrac(0,5);
+            var result = frac1.Divide(frac2);
+        }
+        [TestMethod]
+        public void TestMyFrac_Substract()
+        {
+            var frac1 = new MyComplex(1, 2);
+            var frac2 = new MyComplex(1, 4);
+            var result = frac1.Subtract(frac2);
+            Assert.AreEqual("-1/2", result.ToString());
+        }
+        [TestMethod]
+        public void TestMyFrac_Addition()
+        {
+            var frac1 = new MyComplex(5, 3);
+            var frac2 = new MyComplex(2, 7);
+            var result = frac1.Subtract(frac2);
+            Assert.AreEqual("41/21", result.ToString());
         }
     }
 }
